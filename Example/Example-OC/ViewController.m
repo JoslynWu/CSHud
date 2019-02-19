@@ -62,15 +62,13 @@ static NSString * const cellId = @"cellId";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    cell.textLabel.text = self.data[indexPath.row].allValues.firstObject;
     NSDictionary *data_cell = self.data[indexPath.row];
     NSString *key = data_cell.allKeys.firstObject;
+    cell.textLabel.text = data_cell[key];
     if ([key isEqualToString:@"showFailedAnimation"]
         || [key isEqualToString:@"showSuccessAnimation"]) {
         cell.textLabel.textColor = UIColor.blueColor;
-    } else if ([key isEqualToString:@"hideWithView:"]) {
-        cell.textLabel.textColor = UIColor.redColor;
-    }
+    } 
     return cell;
 }
 

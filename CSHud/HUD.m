@@ -575,11 +575,16 @@ NS_ASSUME_NONNULL_BEGIN
     
     NSMutableArray *gifArray = [NSMutableArray array];
     for (int i = 0; i < imageArr.count; i ++) {
-        UIImage *images = [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageArr[i]]];
-        [gifArray addObject:images];
+        NSString *imageName = imageArr[i];
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]];
+        if (nil == image) {
+            NSLog(@"[CSHud]图片不存在: %@", imageName);
+            continue;
+        } else {
+            [gifArray addObject:image];
+        }
     }
-    
-    if (isnan(duration) || duration <= 0) {
+    if (isnan(duration) || duration <= 0.0001) {
         duration = imageArr.count / 6.0;
     }
     [animateGifView setAnimationImages:gifArray];

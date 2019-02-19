@@ -1,16 +1,24 @@
 PODS:
+  - CSHud (0.9.5):
+    - MBProgressHUD
   - MBProgressHUD (1.1.0)
 
 DEPENDENCIES:
+  - CSHud (from `./../CSHud.podspec`)
   - MBProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - MBProgressHUD
 
+EXTERNAL SOURCES:
+  CSHud:
+    :path: "./../CSHud.podspec"
+
 SPEC CHECKSUMS:
+  CSHud: f897febfcaffb0b9d001c3c457d4e6e503be0de5
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
 
-PODFILE CHECKSUM: d4df32cb3e3d7df7558f1042d7d989f166b90c56
+PODFILE CHECKSUM: 058755b8f382af305d43038858c45e58097500d6
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.6.0

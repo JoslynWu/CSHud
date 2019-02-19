@@ -1,6 +1,16 @@
 platform :ios, '9.0'
 
-target 'Example' do
+def common
+  pod 'MBProgressHUD'
+end
+
+target 'Example-OC' do
     use_frameworks!
-    pod 'MBProgressHUD'
+    common
+end
+
+target 'Example-Swift' do
+  use_frameworks!
+  common
+  pod 'CSHud', :path=>'./../CSHud.podspec'
 end

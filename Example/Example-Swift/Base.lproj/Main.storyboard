@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UBp-iA-KPr">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="LvA-0I-qEh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UBp-iA-KPr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="whu-gY-Cli">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="tpr-8q-ZIi" kind="relationship" relationship="rootViewController" id="mQO-pe-Muo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YFF-jm-xUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="328.80000000000001" y="-564.46776611694156"/>
+        </scene>
+        <!--HUD-->
+        <scene sceneID="fAy-jM-74y">
+            <objects>
+                <viewController id="tpr-8q-ZIi" customClass="ViewController" customModule="Example_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oOP-Oa-KdF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UD5-uf-XMY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tpr-8q-ZIi" id="O2R-t0-0IC"/>
+                                    <outlet property="delegate" destination="tpr-8q-ZIi" id="3hS-YA-Dqf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tn2-eE-FYk" firstAttribute="bottom" secondItem="UD5-uf-XMY" secondAttribute="bottom" id="C2p-Ec-cJ3"/>
+                            <constraint firstItem="UD5-uf-XMY" firstAttribute="leading" secondItem="tn2-eE-FYk" secondAttribute="leading" id="dee-rw-axF"/>
+                            <constraint firstItem="tn2-eE-FYk" firstAttribute="trailing" secondItem="UD5-uf-XMY" secondAttribute="trailing" id="s99-4W-lmX"/>
+                            <constraint firstItem="UD5-uf-XMY" firstAttribute="top" secondItem="tn2-eE-FYk" secondAttribute="top" id="xZ4-6P-bPn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tn2-eE-FYk"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="HUD" id="Pt0-N1-Co0"/>
+                    <connections>
+                        <outlet property="tbView" destination="UD5-uf-XMY" id="c5B-t7-lgx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J9R-fc-57o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1094" y="-564"/>
+        </scene>
+    </scenes>
+</document>

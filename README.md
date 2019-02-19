@@ -8,7 +8,7 @@
 
 ## 效果（部分）
 
-![](/res/cs_hud.git)
+![](/res/cs_hud.gif)
 
 ## 安装
 

@@ -2,8 +2,10 @@
 //  HUD.h
 //  HUD+
 //
-//  Created by admin on 2018/10/19.
+//  Created by Joslyn on 2018/10/19.
 //  Copyright © 2018 Joslyn. All rights reserved.
+//
+// https://github.com/JoslynWu/CSHud.git
 //
 
 #import <Foundation/Foundation.h>

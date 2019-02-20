@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CSHud"
-  s.version      = "0.9.5"
+  s.version      = "0.9.6"
   s.summary      = "基于MBProgressHUD的封装。绘制常用图形并配以动画。"
   s.license      = { :type => 'MIT License', :file => 'LICENSE' }
   s.authors      = { 'Joslyn' => 'cs_joslyn@foxmail.com' }

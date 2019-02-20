@@ -11,12 +11,13 @@ import CSHud
 
 class ViewController: UIViewController {
     
-    typealias IMP = @convention(c)(Any, Selector, UIView, String?, [String]?) -> Void
+    typealias Imp = @convention(c)(Any, Selector, UIView, String?, [String]?) -> Void
+    typealias ImpType = @convention(c)(Any, Selector, UIView, String?, NSInteger) -> Void
     
     @IBOutlet weak var tbView: UITableView!
     
     let cellId = "cellId"
-    lazy var data =
+    var data =
         [["showMessageInView:message:": "文本"],
          ["showSuccessAnimation": "成功(动画) >>"],
          ["showFailedAnimation": "失败(动画) >>"],
@@ -75,7 +76,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let selParts = key.components(separatedBy: ":")
         let sel = Selector(key)
         if let ori_imp = HUD.method(for: sel), HUD.responds(to: sel) {
-            let imp = unsafeBitCast(ori_imp, to: IMP.self)
+            let imp = unsafeBitCast(ori_imp, to: Imp.self)
             if selParts.count > 3 {
                 imp(HUD.self, sel, view, value, icons)
             } else if selParts.count > 2 {
@@ -87,9 +88,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             guard let firstPart = selParts.first else {
                 return
             }
-            if firstPart == "showFailedAnimation" {
+            if firstPart.contains("showFailedAnimation") {
                 showFailedHud(arr: selParts)
-            } else if firstPart == "showSuccessAnimation" {
+            } else if firstPart.contains("showSuccessAnimation") {
                 showSuccessHud(arr: selParts)
             } else {
                 HUD.showFailed(in: view, message: "无对应Action")
@@ -107,11 +108,85 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func showSuccessHud(arr: [String]) {
-        print("--->\((#file as NSString).lastPathComponent)[\(#line)],\(#function)")
+        guard let flags = arr.first?.components(separatedBy: "+") else {
+            return
+        }
+        if flags.count > 1 {
+            guard let typeStr = flags.last else {
+                return
+            }
+            let selStr = (typeStr == "default"
+                ? "showSuccessInView:message:"
+                : "showSuccessInView:message:animation:")
+            let sel = Selector(selStr)
+            guard let ori_imp = HUD.method(for: sel), HUD.responds(to: sel) else {
+                return
+            }
+            let imp = unsafeBitCast(ori_imp, to: ImpType.self)
+            if let type = Int(typeStr) {
+                imp(HUD.self, sel, view, "成功！", type)
+            } else {
+                imp(HUD.self, sel, view, "成功！", -1)
+            }
+            return
+        }
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
+            return
+        }
+        vc.navigationItem.title = "Success"
+        vc.data = [["showSuccessAnimation+default":"默认"],
+                   ["showSuccessAnimation+0":"无外环 + 无动画"],
+                   ["showSuccessAnimation+1":"无外环 + 自左向右动画"],
+                   ["showSuccessAnimation+2":"无外环 + 自左向右动画 + 内部"],
+                   
+                   ["showSuccessAnimation+3":"带外环 + 无动画"],
+                   ["showSuccessAnimation+4":"带外环 + 自左向右动画"],
+                   ["showSuccessAnimation+5":"带外环 + 自左向右动画 + 内部"],
+                   ["showSuccessAnimation+6":"带外环 + 超出外环动画"],
+                   ["showSuccessAnimation+7":"带外环 + 超出外环动画 + 内部"]];
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func showFailedHud(arr: [String]) {
-        print("--->\((#file as NSString).lastPathComponent)[\(#line)],\(#function)")
+        guard let flags = arr.first?.components(separatedBy: "+") else {
+            return
+        }
+        if flags.count > 1 {
+            guard let typeStr = flags.last else {
+                return
+            }
+            let selStr = (typeStr == "default"
+                ? "showFailedInView:message:"
+                : "showFailedInView:message:animation:")
+            let sel = Selector(selStr)
+            guard let ori_imp = HUD.method(for: sel), HUD.responds(to: sel) else {
+                return
+            }
+            let imp = unsafeBitCast(ori_imp, to: ImpType.self)
+            if let type = Int(typeStr) {
+                imp(HUD.self, sel, view, "失败！", type)
+            } else {
+                imp(HUD.self, sel, view, "失败！", -1)
+            }
+            return
+        }
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
+            return
+        }
+        vc.navigationItem.title = "Failed"
+        vc.data = [["showFailedAnimation+default": "默认"],
+                   ["showFailedAnimation+0": "无外环 + 无动画"],
+                   ["showFailedAnimation+1": "无外环 + 一起出现"],
+                   ["showFailedAnimation+2": "无外环 + 先后依次出现"],
+                   
+                   ["showFailedAnimation+3": "带外环 + 无动画"],
+                   ["showFailedAnimation+4": "带外环 + 一起出现"],
+                   ["showFailedAnimation+5": "带外环 + 先后依次出现"]];
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     

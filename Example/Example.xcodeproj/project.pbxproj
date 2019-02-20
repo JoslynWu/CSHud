@@ -32,7 +32,7 @@
 		74B2EF7813464282821ADBEE /* Pods_Example_OC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_OC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		848DAE9B221BD3540086716A /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
 		848DAE9C221BD3540086716A /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
-		848DAE9E221BD37D0086716A /* CSHud.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CSHud.podspec; path = ../CSHud.podspec; sourceTree = "<group>"; };
+		848DAE9E221BD37D0086716A /* CSHud.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CSHud.podspec; path = ../CSHud.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		848DAEA0221BD4350086716A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		848DAEA6221BE5FA0086716A /* Example-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		848DAEA8221BE5FA0086716A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };

@@ -31,7 +31,7 @@
         <!--HUD-->
         <scene sceneID="fAy-jM-74y">
             <objects>
-                <viewController id="tpr-8q-ZIi" customClass="ViewController" customModule="Example_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="tpr-8q-ZIi" customClass="ViewController" customModule="Example_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oOP-Oa-KdF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
